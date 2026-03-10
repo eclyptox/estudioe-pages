@@ -26,6 +26,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
+    <!-- Performance & Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/background-sm.webp" as="image" type="image/webp">
+    <link rel="preload" href="images/card3-sm.webp" as="image" type="image/webp">
+
     <link rel="canonical" href="https://estudioe.eu/">
     <link rel="alternate" href="https://estudioe.eu/" hreflang="es-ES">
     <link rel="alternate" href="https://estudioe.eu/" hreflang="x-default">
@@ -156,7 +167,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet"></noscript>
 
     <style>
         @font-face {
@@ -979,7 +993,7 @@
 </head>
 <body>
 
-<!-- ══════════ 1. INTRO CARD 1 — la "e" con background ══════════ -->
+<!-- Intro Card 1: Logo e con fondo -->
 <section id="intro-1" aria-label="Portada con identidad de marca">
     <img src="images/logo-e-full.svg" class="intro-e" alt="estudio e" aria-hidden="true">
     <div class="intro-scroll" aria-hidden="true">
@@ -1001,19 +1015,23 @@
 </header>
 
 <!-- ══════════ 3. HERO ══════════ -->
-<section id="hero" aria-label="Portada">
+<section id="hero" aria-label="Portada principal">
     <div class="hero-col">
         <img
             src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1000&q=85"
-            alt="Espacio interior con planta"
+            alt="Espacio interior residencial con plantas decorativas"
             loading="eager"
+            width="500"
+            height="600"
         >
     </div>
     <div class="hero-col">
         <img
             src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1000&q=85"
-            alt="Cocina de diseño contemporáneo"
+            alt="Cocina moderna de diseño contemporáneo"
             loading="eager"
+            width="500"
+            height="600"
         >
     </div>
     <div class="hero-copy">
@@ -1025,11 +1043,11 @@
 </section>
 
 <section id="hero-manifesto" aria-label="Mensaje de marca">
-    <p class="manifesto-text">
+    <h2 class="manifesto-text">
         <span class="manifesto-brand">[estudio e]</span> es el punto de<br>
         encuentro, entre la <strong>emoción</strong> de un<br>
         espacio y la <strong>precisión</strong> de una idea.
-    </p>
+    </h2>
 </section>
 
 <!-- ══════════ 4. STATS ══════════ -->
@@ -1046,7 +1064,7 @@
                 srcset="images/optimized/mosaic1-sm.jpg 480w, images/optimized/mosaic1-lg.jpg 820w"
                 sizes="(max-width: 700px) 100vw, 23vw"
             >
-            <img src="images/optimized/mosaic1-lg.jpg" alt="Interior" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic1-lg.jpg" alt="Interior residencial moderno" loading="lazy" decoding="async" width="820" height="780">
         </picture>
     </div>
     <div class="stats-col-2">
@@ -1061,7 +1079,7 @@
                 srcset="images/optimized/mosaic2-sm.jpg 420w, images/optimized/mosaic2-lg.jpg 760w"
                 sizes="(max-width: 700px) 100vw, 24vw"
             >
-            <img src="images/optimized/mosaic2-lg.jpg" alt="Detalle" loading="lazy" decoding="async" class="stat-top">
+            <img src="images/optimized/mosaic2-lg.jpg" alt="Detalle de acabados y decoración" loading="lazy" decoding="async" class="stat-top">
         </picture>
         <picture>
             <source
@@ -1074,7 +1092,7 @@
                 srcset="images/optimized/mosaic3-sm.jpg 420w, images/optimized/mosaic3-lg.jpg 760w"
                 sizes="(max-width: 700px) 100vw, 24vw"
             >
-            <img src="images/optimized/mosaic3-lg.jpg" alt="Salón" loading="lazy" decoding="async" class="stat-bottom">
+            <img src="images/optimized/mosaic3-lg.jpg" alt="Salón elegante con diseño contemporáneo" loading="lazy" decoding="async" class="stat-bottom">
         </picture>
     </div>
     <div class="stats-col-3">
@@ -1089,7 +1107,7 @@
                 srcset="images/optimized/mosaic4-sm.jpg 380w, images/optimized/mosaic4-lg.jpg 700w"
                 sizes="(max-width: 700px) 100vw, 21vw"
             >
-            <img src="images/optimized/mosaic4-lg.jpg" alt="Dormitorio" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic4-lg.jpg" alt="Dormitorio luminoso con diseño moderno" loading="lazy" decoding="async">
         </picture>
     </div>
     <div class="stats-col-4">
@@ -1104,7 +1122,7 @@
                 srcset="images/optimized/mosaic5-sm.jpg 340w, images/optimized/mosaic5-lg.jpg 620w"
                 sizes="(max-width: 700px) 100vw, 17vw"
             >
-            <img src="images/optimized/mosaic5-lg.jpg" alt="Baño" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic5-lg.jpg" alt="Baño minimalista con materiales premium" loading="lazy" decoding="async">
         </picture>
     </div>
     <div class="stat-band">
@@ -1137,7 +1155,7 @@
                 srcset="images/optimized/mosaic6-sm.jpg 800w, images/optimized/mosaic6-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic6-lg.jpg" alt="Salón" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic6-lg.jpg" alt="Proyecto de salón contemporáneo de estudio e" loading="lazy" decoding="async">
         </picture>
     </div>
     <div class="mosaic-col-2">
@@ -1152,7 +1170,7 @@
                 srcset="images/optimized/mosaic7-sm.jpg 800w, images/optimized/mosaic7-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic7-lg.jpg" alt="Dormitorio" loading="lazy" decoding="async" class="mosaic-top">
+            <img src="images/optimized/mosaic7-lg.jpg" alt="Proyecto de dormitorio diseñado por estudio e" loading="lazy" decoding="async" class="mosaic-top">
         </picture>
         <picture>
             <source
@@ -1165,32 +1183,32 @@
                 srcset="images/optimized/mosaic8-sm.jpg 800w, images/optimized/mosaic8-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic8-lg.jpg" alt="Baño" loading="lazy" decoding="async" class="mosaic-bottom">
+            <img src="images/optimized/mosaic8-lg.jpg" alt="Proyecto de baño minimalista de estudio e" loading="lazy" decoding="async" class="mosaic-bottom">
         </picture>
     </div>
 </section>
 
 <!-- ══════════ 6. CITA ══════════ -->
-<section id="quote" aria-label="Filosofía">
-    <p class="qt">
+<section id="quote" aria-label="Filosofía de diseño">
+    <h2 class="qt">
         [Lo <strong>e</strong>sencial es invisible a los ojos,<br>
         pero se siente en cada rincón]
-    </p>
+    </h2>
     <p class="qt-sub">se siente en cada latido</p>
 </section>
 
 <!-- ══════════ 6.5 CTA ══════════ -->
-<section id="cta-section" aria-label="Envía tu propuesta">
+<section id="cta-section" aria-label="Solicitar propuesta de diseño">
     <div class="cta-content">
         <h2 class="cta-title">Cuéntanos tu proyecto</h2>
-        <p class="cta-subtitle">Responde a unas pocas preguntas para que podamos entender tu visión</p>
+        <p class="cta-subtitle">Responde a unas pocas preguntas para que podamos entender tu visión y necesidades de diseño</p>
         <a href="/form.html" class="cta-button">Enviar propuesta</a>
     </div>
 </section>
 
 <!-- ══════════ 7. FOOTER ══════════ -->
-<footer>
-    <img src="images/logo-e-outline.png" class="fw" alt="" aria-hidden="true">
+<footer aria-label="Información de contacto de estudio e">
+    <img src="images/logo-e-outline.png" class="fw" alt="" aria-hidden="true" loading="lazy" width="640" height="640">
     <div class="fc">
         <div class="f-contacts">
             <div class="f-ci">
