@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Return to landing
     document.getElementById('btn-return')?.addEventListener('click', () => {
-        window.location.href = '/landing-new.html';
+        window.location.href = '/';
     });
 
     // Retry button
