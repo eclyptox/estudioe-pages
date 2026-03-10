@@ -1,0 +1,22 @@
+{
+  "name": "estudio e",
+  "short_name": "estudio e",
+  "description": "Interiorismo en Dénia, Alicante",
+  "start_url": "/landing-new.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#c5bbaf",
+  "theme_color": "#626f53",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

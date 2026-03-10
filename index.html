@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudio E - Interiorismo y reformas de espacios. Diseño de interiores personalizado y proyectos de reforma integral para tu hogar o negocio.">
+    <meta name="keywords" content="interiorismo, diseño de interiores, reformas, decoración, reforma de espacios, diseño de hogar, proyecto integral, interiorista profesional">
+    <meta name="author" content="Estudio E">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estudio E - Interiorismo y Reformas de Espacios">
+    <meta property="og:description" content="Transforma tu espacio con nuestro servicio de interiorismo y reformas. Diseño personalizado e integral para hogares y negocios.">
+    <meta property="og:url" content="https://estudioe.eu">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Estudio E - Interiorismo y Reformas">
+    <meta name="twitter:description" content="Diseño de interiores profesional y reformas de espacios">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Preload para mejor rendimiento -->
+    <link rel="preload" as="video" href="preview.mp4">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://estudioe.eu">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Estudio E",
+      "description": "Estudio profesional de interiorismo y reformas de espacios",
+      "url": "https://estudioe.eu",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "",
+        "addressRegion": "",
+        "postalCode": "",
+        "addressCountry": "ES"
+      },
+      "areaServed": "ES",
+      "priceRange": "$$$",
+      "sameAs": []
+    }
+    </script>
+
+    <title>Estudio E - Interiorismo y Reformas Profesionales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        video {
+            max-width: 100%;
+            max-height: 100vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* En móvil, el vídeo ocupa toda la pantalla */
+        @media (max-width: 768px) {
+            video {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+            }
+        }
+
+        /* En desktop, limitamos el ancho para que se vea como un móvil */
+        @media (min-width: 769px) {
+            .video-container {
+                position: relative;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .video-bg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1.2);
+                width: 100%;
+                height: 100%;
+                filter: blur(35px) brightness(0.5);
+                z-index: 0;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .video-bg video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            #videoPlayer {
+                position: relative;
+                max-height: 90vh;
+                border-radius: 12px;
+                box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9);
+                z-index: 1;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden;">Estudio E - Interiorismo y Reformas Profesionales</h1>
+    <main>
+        <div class="video-container">
+            <div class="video-bg">
+                <video playsinline muted loop aria-label="Presentación de Estudio E">
+                    <source src="preview.mp4" type="video/mp4">
+                </video>
+            </div>
+            <video id="videoPlayer" playsinline autoplay muted loop aria-label="Video principal de Estudio E interiorismo y reformas">
+                <source src="preview.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </main>
+
+    <script defer>
+        // Sincronizar videos en desktop
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainVideo = document.getElementById('videoPlayer');
+            const bgVideos = document.querySelectorAll('.video-bg video');
+
+            if (bgVideos.length > 0) {
+                bgVideos.forEach(bgVideo => {
+                    mainVideo.addEventListener('play', () => bgVideo.play());
+                    mainVideo.addEventListener('pause', () => bgVideo.pause());
+                    mainVideo.addEventListener('timeupdate', () => {
+                        bgVideo.currentTime = mainVideo.currentTime;
+                    });
+                });
+            }
+        });
+
+        // Lazy loading para mejorar Core Web Vitals
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.preload = 'metadata';
+            });
+        });
+    </script>
+</body>
+</html>

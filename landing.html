@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio E - Interiores y Reformas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8DCC4;
+            --navy: #1A2B3C;
+            --terracotta: #C77966;
+            --cream: #FAF7F2;
+            --easing: cubic-bezier(0.7, 0, 0.3, 1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            overflow-x: hidden;
+        }
+        
+        /* ==================== PRELOADER ==================== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--sand);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1.2s var(--easing);
+        }
+        
+        #preloader.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .loader-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .percentage {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--navy);
+        }
+        
+        .logo-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .logo-block {
+            width: 100px;
+            height: 100px;
+            background-color: #d4c7b0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border-radius: 50%;
+        }
+        
+        .logo-block-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--terracotta);
+            transition: width 0.05s linear;
+        }
+        
+        .logo-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--cream);
+            z-index: 1;
+            position: relative;
+        }
+        
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 40px 60px;
+            z-index: 100;
+        }
+        
+        .btn-request {
+            background-color: transparent;
+            border: 2px solid var(--cream);
+            color: var(--cream);
+            padding: 14px 32px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+        
+        .btn-request:hover {
+            background-color: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #2d4354 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 60px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        .reveal-container {
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .reveal-text {
+            display: block;
+            transform: translateY(110%);
+        }
+        
+        .reveal-text.active {
+            animation: revealUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        
+        @keyframes revealUp {
+            to {
+                transform: translateY(0%);
+            }
+        }
+        
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(70px, 13vw, 200px);
+            line-height: 0.9;
+            color: var(--cream);
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 3.5vw, 52px);
+            color: var(--terracotta);
+            margin-top: 30px;
+            font-style: italic;
+            font-weight: 400;
+        }
+        
+        /* ==================== ABOUT SECTION ==================== */
+        #about {
+            background-color: var(--cream);
+            padding: 140px 60px;
+        }
+        
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(42px, 7vw, 80px);
+            color: var(--navy);
+            margin-bottom: 30px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-intro {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--navy);
+            opacity: 0.7;
+            margin-bottom: 80px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+            margin-bottom: 100px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--sand);
+            border-radius: 4px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.15);
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .gallery-item.revealed img {
+            transform: scale(1);
+        }
+        
+        .gallery-item:nth-child(1) {
+            grid-column: span 7;
+            height: 550px;
+        }
+        
+        .gallery-item:nth-child(2) {
+            grid-column: span 5;
+            height: 550px;
+        }
+        
+        .gallery-item:nth-child(3) {
+            grid-column: span 5;
+            height: 450px;
+        }
+        
+        .gallery-item:nth-child(4) {
+            grid-column: span 7;
+            height: 450px;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            margin-top: 120px;
+            padding: 80px 0;
+            border-top: 1px solid rgba(26, 43, 60, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .stat-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(65px, 9vw, 130px);
+            color: var(--terracotta);
+            line-height: 1;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+        
+        .stat-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--navy);
+            opacity: 0.6;
+            font-weight: 600;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--navy);
+            padding: 60px;
+            text-align: center;
+            color: var(--cream);
+        }
+        
+        footer p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 25px 30px;
+            }
+            
+            .btn-request {
+                padding: 12px 24px;
+                font-size: 10px;
+            }
+            
+            #hero {
+                padding: 100px 30px;
+            }
+            
+            #about {
+                padding: 100px 30px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(2),
+            .gallery-item:nth-child(3),
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+                height: 320px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .percentage {
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================== PRELOADER ==================== -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="logo-loader">
+                <div class="logo-block">
+                    <div class="logo-block-fill"></div>
+                    <span class="logo-letter">E</span>
+                </div>
+            </div>
+            <div class="percentage">0%</div>
+        </div>
+    </div>
+    
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav>
+        <button class="btn-request">Solicitar Presupuesto</button>
+    </nav>
+    
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="main-content">
+        
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <div class="reveal-container">
+                        <span class="reveal-text">ESTUDIO</span>
+                    </div>
+                    <br>
+                    <div class="reveal-container">
+                        <span class="reveal-text">E</span>
+                    </div>
+                </h1>
+                <div class="reveal-container">
+                    <p class="hero-subtitle reveal-text">Interiores & Reformas</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="about-container">
+                <h2 class="section-title">Diseñamos Espacios</h2>
+                <p class="section-intro">
+                    Transformamos tu hogar en el espacio que siempre soñaste. 
+                    Especialistas en diseño de interiores y reformas integrales.
+                </p>
+                
+                <!-- Gallery Grid -->
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=85" alt="Salón moderno">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=85" alt="Cocina contemporánea">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=85" alt="Dormitorio elegante">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=85" alt="Baño minimalista">
+                    </div>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="18">0</div>
+                        <div class="stat-label">Años Experiencia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="240">0</div>
+                        <div class="stat-label">Proyectos Realizados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">% Satisfacción</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2025 Estudio E - Interiores & Reformas. Todos los derechos reservados.</p>
+        </footer>
+        
+    </main>
+    
+    <script>
+        // ==================== PRELOADER ====================
+        let count = 0;
+        const percentageEl = document.querySelector('.percentage');
+        const preloader = document.getElementById('preloader');
+        const logoFill = document.querySelector('.logo-block-fill');
+        
+        const counter = setInterval(() => {
+            count++;
+            percentageEl.innerText = count + '%';
+            logoFill.style.width = count + '%';
+            
+            if (count === 100) {
+                clearInterval(counter);
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                    initAnimations();
+                }, 600);
+            }
+        }, 18);
+        
+        // ==================== ANIMATIONS ====================
+        function initAnimations() {
+            const revealTexts = document.querySelectorAll('.reveal-text');
+            revealTexts.forEach((text, index) => {
+                setTimeout(() => {
+                    text.classList.add('active');
+                }, index * 180);
+            });
+            
+            observeElements();
+        }
+        
+        // ==================== SCROLL OBSERVER ====================
+        function observeElements() {
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        
+                        if (entry.target.classList.contains('stat-item')) {
+                            animateCounter(entry.target);
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                observer.observe(item);
+            });
+            
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
+        
+        // ==================== COUNTER ANIMATION ====================
+        function animateCounter(element) {
+            const numberEl = element.querySelector('.stat-number');
+            const target = parseInt(numberEl.getAttribute('data-target'));
+            const duration = 2000;
+            const steps = 60;
+            const increment = target / steps;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                numberEl.textContent = Math.floor(current);
+            }, duration / steps);
+        }
+    </script>
+    
+</body>
+</html>
