@@ -16,13 +16,15 @@
     <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-    <!-- Progress bar -->
+    <!-- Step progress -->
     <div id="progress-bar" aria-hidden="true">
-        <div id="progress-fill"></div>
+        <div class="step-dot" id="dot-1">1</div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-dot" id="dot-2">2</div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-dot" id="dot-3">3</div>
     </div>
-    <div id="step-indicator" aria-hidden="true">
-        <span id="step-current">1</span><span class="step-sep">/</span><span class="step-total">3</span>
-    </div>
+    <div id="step-indicator" aria-hidden="true"></div>
 
     <div id="form-container">
         <!-- Intro Screen -->

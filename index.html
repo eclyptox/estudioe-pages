@@ -468,26 +468,6 @@
             font-weight: 900;
         }
 
-        .header-cta {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text);
-            text-decoration: none;
-            padding: 10px 24px;
-            border: 1px solid var(--line);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .header-cta:hover {
-            background: var(--soft-green);
-            color: white;
-            border-color: var(--soft-green);
-        }
-
         /* ═══════════════════════════════════════
            3. HERO — dos fotos + texto superpuesto
         ═══════════════════════════════════════ */
@@ -1117,135 +1097,6 @@
         .cta-button:active {
             transform: translateY(-1px);
         }
-
-        /* ═══════════════════════════════════════
-           FAQ SECTION
-        ═══════════════════════════════════════ */
-        #faq {
-            background: var(--bg);
-            padding: 80px 60px;
-            border-top: 1px solid var(--line);
-        }
-
-        .faq-content {
-            max-width: 780px;
-            margin: 0 auto;
-        }
-
-        .faq-title {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 48px;
-        }
-
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--line);
-        }
-
-        .faq-item:first-child {
-            border-top: 1px solid var(--line);
-        }
-
-        .faq-question {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--text);
-            padding: 24px 0;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .faq-question::-webkit-details-marker { display: none; }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 22px;
-            font-weight: 300;
-            color: var(--muted);
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item[open] .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-item[open] .faq-question {
-            color: var(--soft-green);
-        }
-
-        .faq-answer {
-            padding: 0 0 28px;
-        }
-
-        .faq-answer p {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 300;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .faq-answer a {
-            color: var(--soft-green);
-            text-decoration: none;
-        }
-
-        .faq-answer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ═══════════════════════════════════════
-           WHATSAPP CTA
-        ═══════════════════════════════════════ */
-        .cta-whatsapp {
-            margin-top: 24px;
-            font-size: 14px;
-            font-weight: 300;
-            color: var(--muted);
-        }
-
-        .whatsapp-link {
-            color: #25D366;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: opacity 0.3s;
-        }
-
-        .whatsapp-link:hover {
-            opacity: 0.8;
-        }
-
-        @media (max-width: 900px) {
-            #faq { padding: 60px 28px; }
-            .faq-question { font-size: 16px; padding: 20px 0; }
-        }
-
-        @media (max-width: 480px) {
-            #faq { padding: 50px 12px; }
-            .faq-title { font-size: 11px; margin-bottom: 36px; }
-            .faq-question { font-size: 15px; padding: 18px 0; }
-            .faq-answer p { font-size: 14px; }
-            .header-cta { display: none; }
-        }
     </style>
 </head>
 <body>
@@ -1269,11 +1120,6 @@
 
 <!-- ══════════ 2. HEADER ══════════ -->
 <header>
-    <div class="logo-block">
-        <span class="logo-name">estudio e</span>
-        <span class="logo-sub">interiorismo · dénia · alicante</span>
-    </div>
-    <a href="/form.html" class="header-cta" aria-label="Solicitar propuesta de diseño">Propuesta</a>
 </header>
 
 <!-- ══════════ 3. HERO ══════════ -->
@@ -1459,58 +1305,12 @@
     <p class="qt-sub">se siente en cada latido</p>
 </section>
 
-<!-- ══════════ FAQ ══════════ -->
-<section id="faq" aria-label="Preguntas frecuentes sobre interiorismo">
-    <div class="faq-content">
-        <h2 class="faq-title">Preguntas frecuentes</h2>
-        <div class="faq-list">
-            <details class="faq-item">
-                <summary class="faq-question">¿En qué zonas trabajáis?</summary>
-                <div class="faq-answer">
-                    <p>Trabajamos principalmente en Dénia, Jávea, Calpe, Benidorm y toda la provincia de Alicante. También realizamos proyectos en la Comunidad Valenciana.</p>
-                </div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question">¿Hacéis proyectos residenciales y comerciales?</summary>
-                <div class="faq-answer">
-                    <p>Sí, realizamos proyectos tanto residenciales —viviendas, apartamentos, chalets— como comerciales: restaurantes, hoteles, locales y oficinas. Con 30 años de experiencia, cada proyecto es único.</p>
-                </div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question">¿Cómo funciona el proceso de trabajo?</summary>
-                <div class="faq-answer">
-                    <p>El proceso comienza con una consulta inicial para entender tu visión y necesidades. Elaboramos un proyecto completo de diseño, coordinamos todos los gremios y supervisamos la ejecución hasta la entrega final.</p>
-                </div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question">¿Ofrecéis servicio de dirección de obra?</summary>
-                <div class="faq-answer">
-                    <p>Sí, ofrecemos dirección de obra completa. Nos encargamos de coordinar y supervisar todos los trabajos de reforma, garantizando que el resultado coincida con el proyecto de diseño acordado.</p>
-                </div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question">¿Cómo puedo solicitar información o presupuesto?</summary>
-                <div class="faq-answer">
-                    <p>Puedes enviarnos tu propuesta a través de esta web, llamarnos al <a href="tel:+34965787547">96 578 75 47</a>, escribirnos a <a href="mailto:esteban@estudioe.eu">esteban@estudioe.eu</a> o visitar nuestro estudio en Calle Pedreguer N.º 3 Bajo, Dénia.</p>
-                </div>
-            </details>
-        </div>
-    </div>
-</section>
-
 <!-- ══════════ 6.5 CTA ══════════ -->
 <section id="cta-section" aria-label="Solicitar propuesta de diseño">
     <div class="cta-content">
         <h2 class="cta-title">Cuéntanos tu proyecto</h2>
         <p class="cta-subtitle">Responde a unas pocas preguntas para que podamos entender tu visión y necesidades de diseño</p>
         <a href="/form.html" class="cta-button">Enviar propuesta</a>
-        <p class="cta-whatsapp">
-            O escríbenos por
-            <a href="https://wa.me/34650409040?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20interiorismo." target="_blank" rel="noopener" class="whatsapp-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                WhatsApp
-            </a>
-        </p>
     </div>
 </section>
 

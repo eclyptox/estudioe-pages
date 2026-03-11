@@ -4,51 +4,74 @@
     box-sizing: border-box;
 }
 
-/* ═══ PROGRESS BAR ═══ */
+/* ═══ STEP PROGRESS ═══ */
 #progress-bar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--line);
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0;
     opacity: 0;
     transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
 #progress-bar.visible {
     opacity: 1;
 }
 
+/* track line behind dots */
 #progress-fill {
-    height: 100%;
-    background: var(--soft-green);
-    width: 0%;
-    transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    display: none;
 }
 
-#step-indicator {
-    position: fixed;
-    top: 16px;
-    right: 20px;
+.step-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--soft-green);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Work Sans', sans-serif;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 2px;
-    color: var(--muted);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 101;
+    letter-spacing: 0;
+    color: var(--soft-green);
+    transition: background 0.35s ease, color 0.35s ease;
+    flex-shrink: 0;
 }
 
-#step-indicator.visible {
+.step-dot.done {
+    background: var(--soft-green);
+    color: #fff;
+}
+
+.step-dot.active {
+    background: var(--soft-green);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(98, 111, 83, 0.15);
+}
+
+.step-line {
+    width: 32px;
+    height: 1.5px;
+    background: var(--soft-green);
+    opacity: 0.25;
+    transition: opacity 0.35s ease;
+    flex-shrink: 0;
+}
+
+.step-line.done {
     opacity: 1;
 }
 
-.step-sep {
-    margin: 0 3px;
-    opacity: 0.5;
+#step-indicator {
+    display: none;
 }
 
 :root {
