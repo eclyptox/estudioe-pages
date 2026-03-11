@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Preview — [e] estudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0F0C09;
+      --surface:   #1A1510;
+      --surface2:  #231C14;
+      --border:    #3A2E24;
+      --gold:      #8B7355;
+      --gold-lt:   #A89070;
+      --text:      #E8E0D5;
+      --text-muted:#7A6B5F;
+      --white:     #FFFFFF;
+      --danger:    #C0392B;
+      --success:   #4CAF72;
+      --radius:    6px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ── Token Gate ─────────────────────────────────────────── */
+    #token-gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .gate-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .gate-logo {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .gate-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 36px;
+    }
+
+    .gate-card label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .gate-card input[type="password"] {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .gate-card input[type="password"]:focus {
+      border-color: var(--gold);
+    }
+
+    .gate-error {
+      font-size: 12px;
+      color: var(--danger);
+      margin-bottom: 16px;
+      min-height: 18px;
+    }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      padding: 11px 20px;
+      transition: opacity 0.2s, background 0.2s;
+    }
+
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-primary:not(:disabled):hover { background: var(--gold-lt); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:not(:disabled):hover { color: var(--text); border-color: var(--gold); }
+
+    .btn-send {
+      background: var(--surface2);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .btn-send:not(:disabled):hover { background: var(--gold); color: var(--white); }
+
+    /* ── App Layout ──────────────────────────────────────────── */
+    #app { display: flex; flex-direction: column; height: 100vh; }
+
+    /* ── Top bar ─────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 56px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .topbar-brand {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .topbar-brand span {
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-left: 8px;
+      letter-spacing: 1px;
+    }
+
+    .topbar-actions { display: flex; align-items: center; gap: 10px; }
+
+    .topbar-token {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .token-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      flex-shrink: 0;
+    }
+
+    /* ── Main ────────────────────────────────────────────────── */
+    .main {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ── Sidebar ─────────────────────────────────────────────── */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .sidebar-section {
+      padding: 20px 20px 0;
+    }
+
+    .sidebar-section + .sidebar-section {
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+
+    .sidebar-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── Tabs ────────────────────────────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--surface2);
+      border-radius: var(--radius);
+      padding: 4px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+    }
+
+    .tab.active {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .tab:not(.active):hover { color: var(--text); }
+
+    /* ── Form fields ─────────────────────────────────────────── */
+    .field { margin-bottom: 14px; }
+
+    .field label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .field textarea { min-height: 90px; }
+
+    /* Fields only for team template */
+    .field-team-only { display: none; }
+    .field-team-only.visible { display: block; }
+
+    .sidebar-actions { padding: 16px 20px 20px; }
+
+    .send-status {
+      font-size: 12px;
+      text-align: center;
+      min-height: 20px;
+      margin-top: 10px;
+      border-radius: 4px;
+      padding: 6px 10px;
+    }
+    .send-status.ok  { color: var(--success); background: rgba(76,175,114,0.1); }
+    .send-status.err { color: var(--danger);  background: rgba(192,57,43,0.1); }
+
+    /* ── Preview panel ───────────────────────────────────────── */
+    .preview-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: #2A2219;
+    }
+
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: 48px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .preview-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .preview-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .device-btns {
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border-radius: 4px;
+      padding: 3px;
+      border: 1px solid var(--border);
+    }
+
+    .device-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .device-btn.active { background: var(--gold); color: var(--white); }
+    .device-btn:not(.active):hover { color: var(--text); }
+
+    .preview-wrap {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 32px 20px;
+    }
+
+    .preview-frame-container {
+      width: 100%;
+      max-width: 640px;
+      background: #E8E2D8;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: max-width 0.25s ease;
+    }
+
+    .preview-frame-container.mobile  { max-width: 375px; }
+    .preview-frame-container.tablet  { max-width: 768px; }
+    .preview-frame-container.desktop { max-width: 1024px; }
+
+    #preview-iframe {
+      width: 100%;
+      border: none;
+      display: block;
+      /* height is set by JS after srcdoc loads */
+      min-height: 400px;
+    }
+
+    .preview-empty {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ── Spinner ─────────────────────────────────────────────── */
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(139,115,85,0.3);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Mobile sidebar collapse ─────────────────────────────── */
+    @media (max-width: 780px) {
+      .main { flex-direction: column; }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .preview-wrap { padding: 20px 12px; }
+
+      .topbar-token span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TOKEN GATE
+══════════════════════════════════════════════════════════════════ -->
+<div id="token-gate">
+  <div class="gate-card">
+    <p class="gate-logo">[e] estudio</p>
+    <p class="gate-subtitle">Email Preview · Admin</p>
+
+    <form id="gate-form">
+      <label for="gate-token">Token de acceso</label>
+      <input type="password" id="gate-token" placeholder="Introduce el PREVIEW_TOKEN" autocomplete="current-password" required>
+      <p class="gate-error" id="gate-error" aria-live="polite"></p>
+      <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     APP
+══════════════════════════════════════════════════════════════════ -->
+<div id="app" hidden>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      [e] estudio <span>Email Preview</span>
+    </div>
+    <div class="topbar-actions">
+      <div class="topbar-token">
+        <span class="token-dot"></span>
+        <span>Token activo</span>
+      </div>
+      <button class="btn btn-ghost" id="btn-logout" style="padding:8px 14px;">Salir</button>
+    </div>
+  </header>
+
+  <!-- Main layout -->
+  <div class="main">
+
+    <!-- Sidebar / Controls -->
+    <aside class="sidebar">
+
+      <!-- Template selector -->
+      <div class="sidebar-section">
+        <span class="sidebar-label">Template</span>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-template="customer" role="tab" aria-selected="true">
+            Cliente
+          </button>
+          <button class="tab" data-template="team" role="tab" aria-selected="false">
+            Equipo
+          </button>
+        </div>
+      </div>
+
+      <!-- Data fields -->
+      <div class="sidebar-section">
+        <span class="sidebar-label">Datos de prueba</span>
+
+        <div class="field">
+          <label for="f-nombre">Nombre</label>
+          <input type="text" id="f-nombre" value="Ana García" placeholder="Nombre del cliente">
+        </div>
+
+        <div class="field field-team-only" id="field-contacto">
+          <label for="f-contacto">Contacto</label>
+          <input type="text" id="f-contacto" value="ana@ejemplo.com" placeholder="Email o teléfono">
+        </div>
+
+        <div class="field field-team-only" id="field-propuesta">
+          <label for="f-propuesta">Propuesta</label>
+          <textarea id="f-propuesta" placeholder="Descripción del proyecto...">Me gustaría renovar completamente el salón principal de mi apartamento. Busco un estilo contemporáneo con toques mediterráneos, cálido y luminoso.</textarea>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="sidebar-actions">
+        <button class="btn btn-primary" id="btn-preview">
+          <span id="preview-spinner" class="spinner" style="display:none;"></span>
+          Actualizar preview
+        </button>
+
+        <button class="btn btn-send" id="btn-send">
+          <span id="send-spinner" class="spinner" style="display:none;"></span>
+          Enviar email de prueba
+        </button>
+
+        <p class="send-status" id="send-status" style="display:none;"></p>
+      </div>
+
+    </aside>
+
+    <!-- Preview panel -->
+    <section class="preview-panel">
+
+      <div class="preview-toolbar">
+        <span class="preview-title" id="preview-label">Vista previa · Email al cliente</span>
+        <div class="preview-toolbar-right">
+          <div class="device-btns">
+            <button class="device-btn active" data-device="desktop">Desktop</button>
+            <button class="device-btn" data-device="tablet">Tablet</button>
+            <button class="device-btn" data-device="mobile">Mobile</button>
+          </div>
+          <button class="btn btn-ghost" id="btn-open-tab" style="padding:8px 14px;">
+            Abrir en pestaña
+          </button>
+        </div>
+      </div>
+
+      <div class="preview-wrap">
+        <div class="preview-frame-container" id="frame-container">
+          <iframe id="preview-iframe" title="Email preview" scrolling="no"></iframe>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>
