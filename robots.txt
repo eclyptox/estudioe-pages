@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /form.html
+
+# Crawl-delay for well-behaved bots
+Crawl-delay: 10
 
 Sitemap: https://estudioe.eu/sitemap.xml

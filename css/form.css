@@ -4,6 +4,53 @@
     box-sizing: border-box;
 }
 
+/* ═══ PROGRESS BAR ═══ */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--line);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#progress-bar.visible {
+    opacity: 1;
+}
+
+#progress-fill {
+    height: 100%;
+    background: var(--soft-green);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#step-indicator {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 101;
+}
+
+#step-indicator.visible {
+    opacity: 1;
+}
+
+.step-sep {
+    margin: 0 3px;
+    opacity: 0.5;
+}
+
 :root {
     --bg: #C5BBAF;
     --bg2: #F2EBD9;

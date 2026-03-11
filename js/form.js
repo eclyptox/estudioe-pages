@@ -29,6 +29,23 @@ const validationRules = {
     }
 };
 
+// Progress bar state
+const progressMap = { intro: 0, q1: 33, q2: 66, q3: 100, review: 100, loading: 100, success: 100, error: 0 };
+
+function updateProgress(screenName) {
+    const bar = document.getElementById('progress-bar');
+    const fill = document.getElementById('progress-fill');
+    const indicator = document.getElementById('step-indicator');
+    const stepCurrent = document.getElementById('step-current');
+    const questionScreens = { q1: 1, q2: 2, q3: 3 };
+
+    const showProgress = ['q1', 'q2', 'q3', 'review'].includes(screenName);
+    if (bar) bar.classList.toggle('visible', showProgress);
+    if (indicator) indicator.classList.toggle('visible', showProgress && questionScreens[screenName] !== undefined);
+    if (fill) fill.style.width = (progressMap[screenName] || 0) + '%';
+    if (stepCurrent && questionScreens[screenName]) stepCurrent.textContent = questionScreens[screenName];
+}
+
 // Screen navigation
 function goToScreen(screenName) {
     if (!screens.includes(screenName)) return;
@@ -41,6 +58,8 @@ function goToScreen(screenName) {
 
     formState.currentScreen = screenName;
     currentScreenIndex = screens.indexOf(screenName);
+
+    updateProgress(screenName);
 
     // Auto-focus input when changing to question screens
     setTimeout(() => {
