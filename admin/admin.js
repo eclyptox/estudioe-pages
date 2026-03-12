@@ -45,11 +45,13 @@ if (previewToken) {
 function showGate() {
   tokenGate.hidden = false;
   app.hidden = true;
+  document.body.classList.add('gate-open');
 }
 
 function showApp() {
   tokenGate.hidden = true;
   app.hidden = false;
+  document.body.classList.remove('gate-open');
   loadPreview();
 }
 
