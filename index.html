@@ -432,6 +432,11 @@
             to   { transform: translateY(0); opacity: 0.7; }
         }
 
+        @keyframes heroPan {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
         /* ═══════════════════════════════════════
            2. HEADER / LOGO STRIP
         ═══════════════════════════════════════ */
@@ -1007,7 +1012,10 @@
             .mosaic-col-1 { grid-row: auto; }
             .mosaic-col-2 { grid-template-rows: 0.95fr 1.05fr; }
 
-            #hero { background-size: auto 100%; }
+            #hero {
+                background-size: 160% auto;
+                animation: heroPan 28s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+            }
 
             .intro-e { width: 50vw; height: auto; }
 
