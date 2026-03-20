@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio e - Diseño de Interiores y Reforma en Dénia, Alicante</title>
+    <title>Estudio e - Diseño de Interiores Dénia</title>
     <meta name="description" content="Estudio de interiorismo en Dénia, Alicante. Diseño de interiores y reforma integral para viviendas y espacios comerciales. 30 años de experiencia.">
     <meta name="keywords" content="interiorismo Dénia, diseño interiores Alicante, reforma integral, decoración interior, dirección de obra">
     <meta name="author" content="estudio e">
@@ -432,11 +432,6 @@
             to   { transform: translateY(0); opacity: 0.7; }
         }
 
-        @keyframes heroPan {
-            0%   { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
         /* ═══════════════════════════════════════
            2. HEADER / LOGO STRIP
         ═══════════════════════════════════════ */
@@ -488,6 +483,16 @@
             );
         }
 
+        .hero-col {
+            display: none;
+        }
+
+        .hero-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
         /* gradiente oscuro sobre AMBAS fotos */
         #hero::after {
@@ -931,6 +936,7 @@
             .logo-name { font-size: 30px; letter-spacing: 5px; }
 
             #hero { grid-template-columns: 1fr; height: 100vh; }
+            .hero-col:last-child { display: none; }
             .hero-copy { padding: 32px 28px 40px; align-items: flex-end; gap: 20px; }
             .hero-left { top: -310px; right: 28px; }
             .hero-right { align-self: flex-end; }
@@ -980,17 +986,12 @@
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: auto auto auto auto;
                 gap: 4px;
-                height: auto;
                 min-height: auto;
             }
             .stats-col-1 { grid-column: 1; grid-row: 1 / 3; }
             .stats-col-2 { grid-column: 2; grid-row: 1 / 3; }
-            .stats-col-3 { grid-column: 1; grid-row: 3; min-height: 240px; }
-            .stats-col-3 picture { display: block; width: 100%; height: 100%; min-height: 240px; }
-            .stats-col-3 picture img { width: 100%; height: 240px; object-fit: cover; }
-            .stats-col-4 { display: block; grid-column: 2; grid-row: 3; min-height: 240px; overflow: hidden; }
-            .stats-col-4 picture { display: block; width: 100%; height: 100%; min-height: 240px; }
-            .stats-col-4 picture img { width: 100%; height: 240px; object-fit: cover; }
+            .stats-col-3 { grid-column: 1 / 3; grid-row: 3; }
+            .stats-col-4 { display: none; }
             .stats-col-2 { grid-template-rows: 1fr 1fr; }
             .stats-col-2 { margin-right: 0; }
             .stat-band { grid-column: 1 / 3; grid-row: 4; grid-template-columns: repeat(3, 1fr); padding: 16px 6px 10px; }
@@ -1001,10 +1002,7 @@
             .mosaic-col-1 { grid-row: auto; }
             .mosaic-col-2 { grid-template-rows: 0.95fr 1.05fr; }
 
-            #hero {
-                background-size: auto 102%;
-                animation: heroPan 28s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
-            }
+            #hero { background-size: auto 100%; }
 
             .intro-e { width: 50vw; height: auto; }
 
@@ -1031,6 +1029,8 @@
             .f-ci .role { font-size: 16px; }
             .f-ci .phone { font-size: 22px; }
             .f-addr p { font-size: 16px; line-height: 1.6; }
+
+            .sc.num .n { font-size: 80px; }
 
             #cta-section { padding: 50px 12px; }
             .cta-title { font-size: 24px; }
@@ -1103,7 +1103,7 @@
 
 <!-- Intro Card 1: Logo e con fondo -->
 <section id="intro-1" aria-label="Portada con identidad de marca">
-    <img src="images/logo-e-full.svg" class="intro-e" alt="estudio e" aria-hidden="true">
+    <img src="images/logo-e-full.svg" class="intro-e" alt="estudio e" aria-hidden="true" width="240" height="240">
     <div class="intro-scroll" aria-hidden="true">
         <span>Descubrir</span>
         <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
@@ -1115,11 +1115,35 @@
 
 <!-- ══════════ 1. INTRO CARD 2 — logo full centrado ══════════ -->
 <section id="intro-2" aria-label="Logo estudio e">
-    <img src="images/logo-full.svg" class="intro-logo-full" alt="estudio e" aria-hidden="true">
+    <img src="images/logo-full.svg" class="intro-logo-full" alt="estudio e" aria-hidden="true" width="650" height="200">
 </section>
+
+<!-- ══════════ 2. HEADER ══════════ -->
+<header>
+</header>
+
+<main>
 
 <!-- ══════════ 3. HERO ══════════ -->
 <section id="hero" aria-label="Portada principal">
+    <div class="hero-col">
+        <img
+            src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1000&q=85"
+            alt="Espacio interior residencial con plantas decorativas"
+            loading="eager"
+            width="500"
+            height="600"
+        >
+    </div>
+    <div class="hero-col">
+        <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1000&q=85"
+            alt="Cocina moderna de diseño contemporáneo"
+            loading="eager"
+            width="500"
+            height="600"
+        >
+    </div>
     <div class="hero-copy">
         <div class="hero-left">
             <h1>El diseño no se ve, se siente.</h1>
@@ -1129,11 +1153,16 @@
 </section>
 
 <section id="hero-manifesto" aria-label="Mensaje de marca">
-    <h2 class="manifesto-text">
-        <span class="manifesto-brand">[estudio e]</span> es el punto de<br>
-        encuentro, entre la <strong>emoción</strong> de un<br>
-        espacio y la <strong>precisión</strong> de una idea.
-    </h2>
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <h2 class="manifesto-text">
+            <span class="manifesto-brand">[estudio e]</span> es el punto de<br>
+            encuentro, entre la <strong>emoción</strong> de un<br>
+            espacio y la <strong>precisión</strong> de una idea.
+        </h2>
+        <p style="font-family: 'Work Sans', sans-serif; font-size: 16px; line-height: 1.8; color: #555; margin-top: 40px; letter-spacing: 0.5px;">
+            Con 30 años de trayectoria en diseño de interiores y reforma integral, transformamos espacios residenciales y comerciales en Dénia y alrededores. Nuestro equipo especializado combina visión estética con ejecución técnica impecable, garantizando proyectos que superan expectativas.
+        </p>
+    </div>
 </section>
 
 <!-- ══════════ 4. STATS ══════════ -->
@@ -1165,7 +1194,7 @@
                 srcset="images/optimized/mosaic2-sm.jpg 420w, images/optimized/mosaic2-lg.jpg 760w"
                 sizes="(max-width: 700px) 100vw, 24vw"
             >
-            <img src="images/optimized/mosaic2-lg.jpg" alt="Detalle de acabados y decoración" loading="lazy" decoding="async" class="stat-top">
+            <img src="images/optimized/mosaic2-lg.jpg" alt="Detalle de acabados y decoración" loading="lazy" decoding="async" class="stat-top" width="760" height="380">
         </picture>
         <picture>
             <source
@@ -1178,7 +1207,7 @@
                 srcset="images/optimized/mosaic3-sm.jpg 420w, images/optimized/mosaic3-lg.jpg 760w"
                 sizes="(max-width: 700px) 100vw, 24vw"
             >
-            <img src="images/optimized/mosaic3-lg.jpg" alt="Salón elegante con diseño contemporáneo" loading="lazy" decoding="async" class="stat-bottom">
+            <img src="images/optimized/mosaic3-lg.jpg" alt="Salón elegante con diseño contemporáneo" loading="lazy" decoding="async" class="stat-bottom" width="760" height="380">
         </picture>
     </div>
     <div class="stats-col-3">
@@ -1193,7 +1222,7 @@
                 srcset="images/optimized/mosaic4-sm.jpg 380w, images/optimized/mosaic4-lg.jpg 700w"
                 sizes="(max-width: 700px) 100vw, 21vw"
             >
-            <img src="images/optimized/mosaic4-lg.jpg" alt="Dormitorio luminoso con diseño moderno" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic4-lg.jpg" alt="Dormitorio luminoso con diseño moderno" loading="lazy" decoding="async" width="700" height="560">
         </picture>
     </div>
     <div class="stats-col-4">
@@ -1208,7 +1237,7 @@
                 srcset="images/optimized/mosaic5-sm.jpg 340w, images/optimized/mosaic5-lg.jpg 620w"
                 sizes="(max-width: 700px) 100vw, 17vw"
             >
-            <img src="images/optimized/mosaic5-lg.jpg" alt="Baño minimalista con materiales premium" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic5-lg.jpg" alt="Baño minimalista con materiales premium" loading="lazy" decoding="async" width="620" height="560">
         </picture>
     </div>
     <div class="stat-band">
@@ -1241,7 +1270,7 @@
                 srcset="images/optimized/mosaic6-sm.jpg 800w, images/optimized/mosaic6-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic6-lg.jpg" alt="Proyecto de salón contemporáneo de estudio e" loading="lazy" decoding="async">
+            <img src="images/optimized/mosaic6-lg.jpg" alt="Proyecto de salón contemporáneo de estudio e" loading="lazy" decoding="async" width="1400" height="700">
         </picture>
     </div>
     <div class="mosaic-col-2">
@@ -1256,7 +1285,7 @@
                 srcset="images/optimized/mosaic7-sm.jpg 800w, images/optimized/mosaic7-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic7-lg.jpg" alt="Proyecto de dormitorio diseñado por estudio e" loading="lazy" decoding="async" class="mosaic-top">
+            <img src="images/optimized/mosaic7-lg.jpg" alt="Proyecto de dormitorio diseñado por estudio e" loading="lazy" decoding="async" class="mosaic-top" width="1400" height="700">
         </picture>
         <picture>
             <source
@@ -1269,7 +1298,7 @@
                 srcset="images/optimized/mosaic8-sm.jpg 800w, images/optimized/mosaic8-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic8-lg.jpg" alt="Proyecto de baño minimalista de estudio e" loading="lazy" decoding="async" class="mosaic-bottom">
+            <img src="images/optimized/mosaic8-lg.jpg" alt="Proyecto de baño minimalista de estudio e" loading="lazy" decoding="async" class="mosaic-bottom" width="1400" height="700">
         </picture>
     </div>
 </section>
@@ -1292,9 +1321,11 @@
     </div>
 </section>
 
+</main>
+
 <!-- ══════════ 7. FOOTER ══════════ -->
 <footer aria-label="Información de contacto de estudio e">
-    <img src="images/logo-e-outline.png" class="fw" alt="" aria-hidden="true" loading="lazy" width="640" height="640">
+    <img src="images/logo-e-outline.png" class="fw" alt="Logotipo estudio e" aria-hidden="false" loading="lazy" width="640" height="640">
     <div class="fc">
         <div class="f-contacts">
             <div class="f-ci">
@@ -1317,11 +1348,14 @@
             <p><a href="mailto:noemi@estudioe.eu" style="color: inherit; text-decoration: none;">noemi@estudioe.eu</a></p>
         </div>
         <div class="f-social">
-            <a href="https://www.instagram.com/estudioe_interiorismo" target="_blank" rel="noopener" aria-label="Instagram">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
                 <img src="images/icon-instagram.svg" alt="Instagram" width="24" height="24">
             </a>
-            <a href="https://www.facebook.com/estudioeinteriorismoenesencia" target="_blank" rel="noopener" aria-label="Facebook">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
                 <img src="images/icon-facebook.svg" alt="Facebook" width="24" height="24">
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+                <img src="images/icon-tiktok.svg" alt="TikTok" width="24" height="24">
             </a>
         </div>
     </div>
