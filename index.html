@@ -34,8 +34,8 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="images/optimized/background-sm.webp" as="image" type="image/webp" fetchpriority="high">
-    <link rel="preload" href="images/optimized/card3-sm.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/optimized/background-sm.webp" imagesrcset="images/optimized/background-sm.webp 1x, images/optimized/background-lg.webp 2x" imagesizes="100vw" fetchpriority="high">
+    <link rel="preload" as="image" href="images/optimized/card3-sm.webp" imagesrcset="images/optimized/card3-sm.webp 1x, images/optimized/card3-lg.webp 2x" imagesizes="100vw" fetchpriority="high">
 
     <link rel="canonical" href="https://estudioe.eu/">
     <link rel="alternate" href="https://estudioe.eu/" hreflang="es-ES">
@@ -901,8 +901,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 44px;
+            height: 44px;
             color: var(--text-footer);
             text-decoration: none;
             transition: transform 0.3s, opacity 0.3s;
@@ -925,7 +925,8 @@
 
         .f-legal-link {
             display: inline-block;
-            padding: 4px 0;
+            padding: 10px 6px;
+            min-height: 44px;
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
         }
