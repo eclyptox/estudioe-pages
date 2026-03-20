@@ -928,6 +928,18 @@
             opacity: 0.35;
         }
 
+        .f-legal-link {
+            display: inline-block;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .f-legal-link:hover {
+            color: var(--text);
+            border-bottom-color: var(--muted);
+            opacity: 1;
+        }
+
         /* ═══════════════════════════════════════
            RESPONSIVE
         ═══════════════════════════════════════ */
@@ -1357,6 +1369,11 @@
             <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
                 <img src="images/icon-tiktok.svg" alt="TikTok" width="24" height="24">
             </a>
+        </div>
+        <div class="f-legal" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(100, 85, 70, 0.2); text-align: center;">
+            <a href="/contact" style="color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 1px; transition: all 0.3s ease; position: relative;" class="f-legal-link">Contacto</a>
+            <span style="color: var(--muted); margin: 0 16px; opacity: 0.4;">·</span>
+            <a href="/privacy" style="color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 1px; transition: all 0.3s ease; position: relative;" class="f-legal-link">Privacidad</a>
         </div>
     </div>
 </footer>
