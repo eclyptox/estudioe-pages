@@ -75,7 +75,7 @@
             "height": 200
           },
           "image": [
-            "https://estudioe.eu/images/optimized/mosaic6-lg.jpg",
+            "https://estudioe.eu/images/optimized/mosaic6-lg.webp",
             "https://estudioe.eu/images/optimized/mosaic7-lg.jpg",
             "https://estudioe.eu/images/optimized/mosaic8-lg.jpg"
           ],
@@ -312,7 +312,8 @@
             --text-footer:  #2f2f2f;
             --muted:        #8A7A6E;
             --line:         rgba(100, 85, 70, 0.2);
-            --soft-green:   #626f53;
+            --accent-warm:  #7A6656;
+            --accent-warm-hover: #665445;
         }
 
         html {
@@ -1092,7 +1093,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             padding: 16px 48px;
-            background: var(--soft-green);
+            background: var(--accent-warm);
             color: white;
             text-decoration: none;
             border-radius: 2px;
@@ -1101,13 +1102,210 @@
         }
 
         .cta-button:hover {
-            background: #556649;
+            background: var(--accent-warm-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .cta-button:active {
             transform: translateY(-1px);
+        }
+
+        /* ═══════════════════════════════════════
+           CONTENIDO SEO / FAQ
+        ═══════════════════════════════════════ */
+        #seo-brief {
+            padding: 90px 60px;
+            background:
+                linear-gradient(180deg, rgba(242, 235, 217, 0.85) 0%, rgba(197, 187, 175, 0.45) 100%),
+                radial-gradient(circle at 12% 18%, rgba(122, 102, 86, 0.1) 0%, rgba(122, 102, 86, 0) 42%);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seo-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        #seo-brief::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 85% 22%, rgba(122, 102, 86, 0.14), rgba(122, 102, 86, 0) 38%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 45%);
+            pointer-events: none;
+        }
+
+        .seo-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 14px;
+        }
+
+        .seo-kicker {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .seo-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            padding-top: 4px;
+        }
+
+        .seo-tags span {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 10px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: #6a5648;
+            border: 1px solid rgba(122, 102, 86, 0.34);
+            border-radius: 999px;
+            padding: 7px 11px 6px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        .seo-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(34px, 5vw, 56px);
+            font-weight: 400;
+            line-height: 1.12;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .seo-lead {
+            max-width: 920px;
+            font-size: 17px;
+            line-height: 1.85;
+            color: #3f352c;
+            margin-bottom: 38px;
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .seo-card {
+            background: rgba(255, 255, 255, 0.48);
+            border: 1px solid rgba(100, 85, 70, 0.22);
+            padding: 24px 22px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            backdrop-filter: blur(2px);
+            transition: transform 0.45s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 6px 18px rgba(53, 42, 30, 0.06);
+        }
+
+        .seo-card h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .seo-card p {
+            font-size: 15.5px;
+            line-height: 1.8;
+            color: #3e3329;
+        }
+
+        .seo-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(122, 102, 86, 0.45);
+            box-shadow: 0 14px 26px rgba(53, 42, 30, 0.12);
+        }
+
+        .seo-note {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #3e3329;
+            border-left: 3px solid rgba(122, 102, 86, 0.5);
+            padding-left: 14px;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.34);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 14px;
+        }
+
+        .seo-kicker,
+        .seo-title,
+        .seo-lead,
+        .seo-note,
+        .seo-card {
+            opacity: 0;
+            transform: translateY(14px);
+            animation: seoLiftIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        .seo-kicker { animation-delay: 0.05s; }
+        .seo-title { animation-delay: 0.12s; }
+        .seo-lead { animation-delay: 0.2s; }
+        .seo-card:nth-child(1) { animation-delay: 0.3s; }
+        .seo-card:nth-child(2) { animation-delay: 0.38s; }
+        .seo-card:nth-child(3) { animation-delay: 0.46s; }
+        .seo-note { animation-delay: 0.54s; }
+
+        @keyframes seoLiftIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            #seo-brief { padding: 70px 28px; }
+            .seo-head { grid-template-columns: 1fr; gap: 8px; margin-bottom: 8px; }
+            .seo-tags { justify-content: flex-start; }
+            .seo-grid { grid-template-columns: 1fr; gap: 12px; }
+            .seo-card { min-height: 0; padding: 20px 18px; }
+            .seo-lead { font-size: 16px; margin-bottom: 26px; }
+        }
+
+        @media (max-width: 480px) {
+            #seo-brief { padding: 48px 12px; }
+            .seo-title { font-size: 32px; line-height: 1.18; }
+            .seo-kicker { font-size: 10px; letter-spacing: 2.6px; }
+            .seo-card p, .seo-note { font-size: 14.5px; line-height: 1.75; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .seo-kicker,
+            .seo-title,
+            .seo-lead,
+            .seo-note,
+            .seo-card {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+
+            .seo-card {
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -1282,7 +1480,7 @@
                 srcset="images/optimized/mosaic6-sm.jpg 800w, images/optimized/mosaic6-lg.jpg 1400w"
                 sizes="(max-width: 700px) 100vw, 50vw"
             >
-            <img src="images/optimized/mosaic6-lg.jpg" alt="Proyecto de salón contemporáneo de estudio e" loading="lazy" decoding="async" width="1400" height="700">
+            <img src="images/optimized/mosaic6-lg.webp" alt="Proyecto de salón contemporáneo de estudio e" loading="lazy" decoding="async" width="1400" height="700">
         </picture>
     </div>
     <div class="mosaic-col-2">
@@ -1333,6 +1531,53 @@
     </div>
 </section>
 
+<section id="seo-brief" aria-label="Preguntas frecuentes sobre interiorismo y reforma">
+    <div class="seo-shell">
+        <div class="seo-head">
+            <p class="seo-kicker">Guía de proyecto</p>
+            <div class="seo-tags" aria-hidden="true">
+                <span>Interiorismo</span>
+                <span>Reforma Integral</span>
+                <span>Dénia · Alicante</span>
+            </div>
+        </div>
+        <h2 class="seo-title">Antes de iniciar tu reforma o proyecto de interiorismo</h2>
+        <p class="seo-lead">
+            En estudio e desarrollamos proyectos residenciales y comerciales en Dénia y Alicante con un enfoque técnico y creativo.
+            Esta guía rápida te ayuda a preparar el primer contacto para avanzar con más claridad desde el inicio.
+        </p>
+
+        <div class="seo-grid">
+            <article class="seo-card">
+                <h3>1. Alcance inicial</h3>
+                <p>
+                    Define qué zona quieres transformar, si buscas reforma integral o intervención parcial y qué objetivos funcionales
+                    son prioritarios en el día a día. Esto acelera la propuesta técnica y evita desviaciones en fases posteriores.
+                </p>
+            </article>
+            <article class="seo-card">
+                <h3>2. Estilo y materiales</h3>
+                <p>
+                    Reúne referencias de ambiente, materiales y acabados. Con esa base podemos traducir preferencias estéticas en
+                    soluciones reales de iluminación, distribución y selección de elementos duraderos para cada espacio.
+                </p>
+            </article>
+            <article class="seo-card">
+                <h3>3. Plazos y presupuesto</h3>
+                <p>
+                    Compartir rangos de inversión y fechas orientativas permite planificar el proyecto por prioridades, coordinar
+                    gremios con antelación y mantener una ejecución consistente en calidad, tiempos y decisiones clave.
+                </p>
+            </article>
+        </div>
+
+        <p class="seo-note">
+            Si quieres agilizar el proceso, envíanos tu propuesta inicial desde el formulario y te responderemos con los siguientes
+            pasos recomendados para tu caso.
+        </p>
+    </div>
+</section>
+
 </main>
 
 <!-- ══════════ 7. FOOTER ══════════ -->
@@ -1361,13 +1606,13 @@
         </div>
         <div class="f-social">
             <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-                <img src="images/icon-instagram.svg" alt="Instagram" width="24" height="24">
+                <img src="images/icon-instagram.svg" alt="Instagram" loading="lazy" decoding="async" width="24" height="24">
             </a>
             <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-                <img src="images/icon-facebook.svg" alt="Facebook" width="24" height="24">
+                <img src="images/icon-facebook.svg" alt="Facebook" loading="lazy" decoding="async" width="24" height="24">
             </a>
             <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
-                <img src="images/icon-tiktok.svg" alt="TikTok" width="24" height="24">
+                <img src="images/icon-tiktok.svg" alt="TikTok" loading="lazy" decoding="async" width="24" height="24">
             </a>
         </div>
         <div class="f-legal" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(100, 85, 70, 0.2); text-align: center;">
