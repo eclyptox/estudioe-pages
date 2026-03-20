@@ -34,8 +34,8 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="images/background-sm.webp" as="image" type="image/webp" fetchpriority="high">
-    <link rel="preload" href="images/card3-sm.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="images/optimized/background-sm.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="images/optimized/card3-sm.webp" as="image" type="image/webp" fetchpriority="high">
 
     <link rel="canonical" href="https://estudioe.eu/">
     <link rel="alternate" href="https://estudioe.eu/" hreflang="es-ES">
@@ -431,6 +431,11 @@
         @keyframes fadeUpOpaque {
             from { transform: translateY(20px); opacity: 0; }
             to   { transform: translateY(0); opacity: 0.7; }
+        }
+
+        @keyframes heroPan {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         /* ═══════════════════════════════════════
@@ -1003,7 +1008,10 @@
             .mosaic-col-1 { grid-row: auto; }
             .mosaic-col-2 { grid-template-rows: 0.95fr 1.05fr; }
 
-            #hero { background-size: auto 100%; }
+            #hero {
+                background-size: auto 102%;
+                animation: heroPan 28s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+            }
 
             .intro-e { width: 50vw; height: auto; }
 
