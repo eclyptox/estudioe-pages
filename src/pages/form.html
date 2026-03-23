@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta | estudio e</title>
+    <meta name="description" content="Cuéntanos tu proyecto. Queremos escucharte.">
+    <link rel="canonical" href="https://estudioe.eu/form">
+    <meta name="robots" content="noindex,nofollow">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <!-- Step progress -->
+    <div id="progress-bar" aria-hidden="true">
+        <div class="step-dot" id="dot-1">1</div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-dot" id="dot-2">2</div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-dot" id="dot-3">3</div>
+    </div>
+    <div id="step-indicator" aria-hidden="true"></div>
+
+    <div id="form-container">
+        <!-- Intro Screen -->
+        <section id="screen-intro" class="screen active" role="main">
+            <div class="intro-content">
+                <img src="images/logo-e-full.svg" class="intro-logo" alt="estudio e" width="180" height="90">
+                <p class="intro-tagline">Bienvenido a [e]</p>
+                <p class="intro-subtitle">Para nosotros, cada proyecto es una pieza de autor. Ayúdanos a entender tu visión respondiendo a estas breves preguntas para que podamos darte la mejor respuesta técnica y creativa.</p>
+                <button id="btn-start" class="btn-primary">Comenzar</button>
+            </div>
+        </section>
+
+        <!-- Question 1: Nombre -->
+        <section id="screen-q1" class="screen" aria-label="Paso 1 de 3: Tu nombre">
+            <div class="question-content">
+                <h1 class="question-title">¿A quién tenemos el placer de saludar?</h1>
+                <div class="form-group">
+                    <label for="nombre">Nombre y apellidos</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Tu nombre"
+                        maxlength="100"
+                        required
+                        autocomplete="name"
+                        autocapitalize="words"
+                        spellcheck="false"
+                    >
+                    <div class="error-message" id="error-nombre" role="alert" aria-live="polite"></div>
+                </div>
+                <div class="navigation">
+                    <button class="btn-next">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Question 2: Contacto -->
+        <section id="screen-q2" class="screen" aria-label="Paso 2 de 3: Tu contacto">
+            <div class="question-content">
+                <h1 class="question-title">¿Cómo prefieres que nos pongamos en contacto?</h1>
+                <div class="form-group">
+                    <label for="contacto">Correo electrónico o teléfono</label>
+                    <input
+                        type="text"
+                        id="contacto"
+                        name="contacto"
+                        placeholder="email@ejemplo.com o +34 123 456 789"
+                        maxlength="100"
+                        required
+                        autocomplete="email"
+                        inputmode="email"
+                        spellcheck="false"
+                    >
+                    <div class="error-message" id="error-contacto" role="alert" aria-live="polite"></div>
+                </div>
+                <div class="navigation">
+                    <button class="btn-back">Atrás</button>
+                    <button class="btn-next">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Question 3: Transformación -->
+        <section id="screen-q3" class="screen" aria-label="Paso 3 de 3: Tu proyecto">
+            <div class="question-content">
+                <h1 class="question-title">Cuéntanos brevemente, ¿qué transformación tienes en mente para tu espacio?</h1>
+                <div class="form-group">
+                    <label for="transformacion">Tu visión</label>
+                    <textarea
+                        id="transformacion"
+                        name="transformacion"
+                        placeholder="Describe tu proyecto: tipo de espacio, estilo que te inspira, necesidades especiales..."
+                        maxlength="2000"
+                        rows="5"
+                        required
+                        spellcheck="true"
+                        autocorrect="on"
+                    ></textarea>
+                    <div class="char-count"><span id="char-count">0</span>/2000</div>
+                    <div class="error-message" id="error-transformacion" role="alert" aria-live="polite"></div>
+                </div>
+                <div class="navigation">
+                    <button class="btn-back">Atrás</button>
+                    <button class="btn-next">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Screen -->
+        <section id="screen-review" class="screen" aria-label="Revisión de tu propuesta">
+            <div class="question-content">
+                <h1 class="question-title">Revisemos tu propuesta</h1>
+                <div class="review-box">
+                    <div class="review-item">
+                        <p class="review-label">Nombre</p>
+                        <p class="review-value" id="review-nombre"></p>
+                    </div>
+                    <div class="review-item">
+                        <p class="review-label">Contacto</p>
+                        <p class="review-value" id="review-contacto"></p>
+                    </div>
+                    <div class="review-item">
+                        <p class="review-label">Tu visión</p>
+                        <p class="review-value" id="review-transformacion"></p>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn-back">Editar</button>
+                    <button id="btn-submit" class="btn-primary">Enviar propuesta</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Screen -->
+        <section id="screen-loading" class="screen" aria-label="Enviando tu propuesta" aria-live="polite">
+            <div class="loading-content">
+                <div class="spinner" role="progressbar" aria-label="Enviando..."></div>
+                <p>Enviando tu propuesta...</p>
+            </div>
+        </section>
+
+        <!-- Success Screen -->
+        <section id="screen-success" class="screen" aria-label="Propuesta enviada con éxito">
+            <div class="success-content">
+                <h1 class="success-title">Gracias <span id="success-nombre"></span></h1>
+                <p class="success-subtitle">Te responderemos muy pronto</p>
+                <img src="images/logo-e-outline.png" class="success-logo" alt="" aria-hidden="true" width="200" height="200">
+                <button id="btn-return" class="btn-secondary">Volver a la landing</button>
+            </div>
+        </section>
+
+        <!-- Error Screen -->
+        <section id="screen-error" class="screen" aria-label="Error al enviar" aria-live="assertive">
+            <div class="error-content">
+                <h1>Oops, algo no salió bien</h1>
+                <p id="error-message-text"></p>
+                <button id="btn-retry" class="btn-primary">Intentar de nuevo</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/form.js"></script>
+</body>
+</html>
