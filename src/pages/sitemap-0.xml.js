@@ -8,19 +8,19 @@ export const GET = () => {
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://estudioe.eu/contact</loc>
+    <loc>https://estudioe.eu/contact/</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://estudioe.eu/privacy</loc>
+    <loc>https://estudioe.eu/privacy/</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://estudioe.eu/about</loc>
+    <loc>https://estudioe.eu/about/</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
