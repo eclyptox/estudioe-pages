@@ -1,5 +1,9 @@
+/sitemap-0.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 /sitemap.xml
-  Content-Type: text/xml; charset=utf-8
+  Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=3600
 
 /*
