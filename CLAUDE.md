@@ -102,6 +102,23 @@ Recent git history shows focus on Cloudflare Pages compatibility:
 3. Test the sitemap endpoint: `/sitemap-0.xml` should return valid XML with proper headers
 4. Check Cloudflare Pages deployment logs for any file placement issues
 
+## Search Console Integration
+
+Monitor Google Search Console data using the centralized CLI tool:
+
+```bash
+# View top search queries
+~/Code/search-console-cli/python3 search_console.py queries estudioe.eu
+
+# View statistics
+~/Code/search-console-cli/python3 search_console.py stats estudioe.eu
+
+# View both
+~/Code/search-console-cli/python3 search_console.py all estudioe.eu
+```
+
+See `SEARCH-CONSOLE.md` for complete documentation and setup instructions.
+
 ## Notes for Development
 
 - Images are optimized and served as WebP with responsive srcsets (see `index.html`)
